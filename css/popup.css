@@ -1,0 +1,10 @@
+body {
+	width: 700px;
+    height: 500px;
+    padding: 5px;
+}
+
+.section {
+	padding: 1rem 0 0 0 !important;
+    height: 300px;
+}
