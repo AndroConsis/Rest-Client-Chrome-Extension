@@ -2,65 +2,72 @@ $( document ).ready(function() {
     $('select').material_select();
 });
 
-var app = angular.module("myApp", ["ngRoute"]);
+app.controller("mainController", function($scope, $location, $state, $rootScope){
 
-app.controller("mainController", function($scope, $location){
+  $scope.urlInput = "Url is here";
+  $scope.urlInput = $location.path();
+  $scope.selectedMethod = "1";
+  $rootScope.selectedMethod = $scope.selectedMethod;
 
-  $scope.onMethodChange = function(selectedMethod){
-    switch(+selectedMethod) { 
-        case 1 : 
-          $location.path("/get");
-          break;
-        case 2 :
-          $location.path("/post")
-          break;
-        case 3 : 
-          $location.path("/put")
-          break;
-        case 4 : 
-          $location.path("/delete")
-          break;
-        }
-  }
-  
-   $scope.submit = function(){
-    alert($scope.selectedMethod);
-   }
 });
 
-app.controller("getController", ["$scope", function($scope){
+app.controller("getController", function($scope, popupService,$window,Movie, $state, $rootScope){
+  $scope.limit = 20;
+  $rootScope.selectedMethod = "1";
+ $scope.movies = Movie.query(); //fetch all movies. Issues a GET to /api/movies
+  $scope.deleteMovie = function(movie) { // Delete a movie. Issues a DELETE to /api/movies/:id
+    if (popupService.showPopup('Really delete this?')) {
+      movie.$delete(function() {
+        $window.location.href = '/movies'; //redirect to home
+      });
+    }
+  };
+});
 
-}]);
+app.controller("getParticularView", function($scope,$stateParams,Movie, $rootScope){
+    $rootScope.selectedMethod = "1"
+    $scope.movie=Movie.get({id:$stateParams.id});
 
-app.controller("postController", ["$scope", function($scope){
+})
 
-}]);
+app.controller("postController",function($scope, Movie, $state, $rootScope){
+    
+$rootScope.selectedMethod = "2";
+    $scope.movie=new Movie();
 
-app.controller("putController", ["$scope", function($scope){
+    $scope.addMovie=function(){
+        $scope.movie.$save(function(){
+            $state.go('movies');
+        });
+    }
+});
 
-}]);
+app.controller("putController", 
+  function($scope, $state, $stateParams, Movie){
+   $scope.updateMovie=function(){
+        $scope.movie.$update(function(){
+            $state.go('movies');
+        });
+    };
 
-app.controller("deleteController", ["$scope", function($scope){
+    $scope.loadMovie=function(){
+        $scope.movie=Movie.get({id:$stateParams.id});
+    };
 
-}]);
+    $scope.loadMovie();
+});
 
-app.config(['$routeProvider', function($routeProvider) {
-    $routeProvider
-    .when("/get", {
-        templateUrl : "templates/getform.html",
-        controller : "getController",
-    })
-    .when("/post", {
-        templateUrl : "templates/postform.html",
-         controller : "postController",
-    })
-    .when("/put", {
-        templateUrl : "templates/putform.html",
-         controller : "putController",
-    })
-    .when("/delete", {
-        templateUrl : "templates/deleteform.html",
-         controller : "putController",
-    })
-    .otherwise({redirectTo:'/get'});
-}]);
+app.factory('Movie',function($resource){
+    return $resource('http://movieapp-sitepointdemos.rhcloud.com/api/movies/:id',{id:'@_id'},{
+        update: {
+            method: 'PUT'
+        }
+    });
+});
+
+app.service('popupService',function($window){
+    this.showPopup=function(message){
+        return $window.confirm(message);
+    }
+});
+

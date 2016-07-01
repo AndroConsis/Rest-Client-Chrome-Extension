@@ -7,4 +7,19 @@ body {
 .section {
 	padding: 1rem 0 0 0 !important;
     height: 300px;
+    overflow-y: scroll;
+}
+
+.btn-floating.btn-large{
+	position: fixed;
+	bottom: 35px;
+	right: 35px
+}
+td {
+    border-bottom: 1px solid whitesmoke;
+    width: 300px;
+}
+
+.left {
+    margin-left: 10px;
 }

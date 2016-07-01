@@ -1,1 +1,8 @@
-<h6>Get </h6>
+<table class="table movietable">    
+ <tr ng-repeat="movie in movies" ui-sref="viewMovie({id:movie._id})">
+<td><h5>{{movie.title}}</h5></td>        
+ <td>            
+ <a class="btn btn-
+danger"  ng-click="deleteMovie(movie)">Delete</a>         </td>     </tr>
+</table> <a class="btn-floating btn-large waves-effect waves-light teal
+accent-4" ui-sref="newMovie"><i class="material-icons">add</i></a>

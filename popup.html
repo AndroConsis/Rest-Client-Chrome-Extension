@@ -2,17 +2,17 @@
 <html>
   <head>
     <title>Rest Client</title>
-    <link href="popup.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="lib/materialize.min.css">
-    <script type="text/javascript" src="lib/jquery-2.1.1.min.js"></script>
-    <script type="text/javascript" src="lib/angular.min.js"></script>
-    <script type="text/javascript" src="lib/angular-route.js"></script>
-    <script type="text/javascript" src="lib/materialize.min.js"></script>
-    <script src="js/popup.js"></script>
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="css/popup.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="css/pace.css">
+
+    
   </head>
   <body ng-app="myApp">
  <nav>
     <div class="nav-wrapper grey lighten-1">
+    <a ui-sref="movies" class="left"><i class="material-icons">home</i></a>
       <a href="#" class="brand-logo center ">Rest Client</a>
     </div>
   </nav>
@@ -20,7 +20,7 @@
   	<div ng-controller="mainController">
   		<div class="row">
 	      <div class="input-field col s2 ">
-	        <select ng-model="selectedMethod" ng-change="onMethodChange(selectedMethod)">
+	        <select disabled ng-model="selectedMethod" ng-change="onMethodChange(selectedMethod)">
 		      <option value="" disabled selected>Method</option>
 		      <option value="1">GET</option>
 		      <option value="2">POST</option>
@@ -28,14 +28,14 @@
 		      <option value="4">DELETE</option>
 		    </select>
 	      </div>
-	      <div class="col s8 input-field">
-	       <input id="url" type="text" placeholder="URL">
+	      <div class="col s10 input-field">
+	       <input id="url" type="text" placeholder="URL" ng-model="urlInput" disabled>
 	      </div>
-	      <div class="col s2 input-field"> 
+	     <!--  <div class="col s2 input-field"> 
 	      	<button class="waves-effect waves-teal btn-flat  grey lighten-3" style="width: 104px" ng-click="submit()">
 	      		Submit
 	  		</button>
-	      </div>
+	      </div> -->
   	</div>
   </div>
   <!-- <div class="progress">
@@ -43,8 +43,17 @@
   </div>
    --><div class="divider"></div>
  	<div class="section">
-  		<div ng-view></div>
+  		<div ui-view></div>
  	</div>
  	</div>
+ 	<script type="text/javascript" src="lib/pace.min.js"></script>
+    <script type="text/javascript" src="lib/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="lib/angular.min.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
+    <script src="js/popup.js"></script>
+    <script type="text/javascript" src="lib/angular-ui-router.min.js"></script>
+    <script type="text/javascript" src="lib/angular-resource.min.js"></script>
+    <script type="text/javascript" src="lib/materialize.min.js"></script>
+    
   </body>
 </html>
