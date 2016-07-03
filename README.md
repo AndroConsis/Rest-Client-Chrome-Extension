@@ -33,7 +33,7 @@ To load extension in Chrome, open up
 
 chrome://extensions/
 ```
- in your chrome browser and click “Developer mode” in the top right. Now click “Load unpacked extension…” and select the directory you have cloned the bitbucket project. You should now see Rest Client extension in the list.
+ in your chrome browser and click “Developer mode” in the top right. Now click “Load unpacked extension…” and select the directory you have cloned the bitbucket project. You should now see Rest Client extension in the list. You can open it by clicking on the icon ![icon.png](https://bitbucket.org/repo/5apLgx/images/3846976592-icon.png)
 
 
 ## Prerequisities
