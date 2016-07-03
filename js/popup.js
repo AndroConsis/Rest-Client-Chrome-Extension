@@ -2,42 +2,44 @@ $( document ).ready(function() {
     $('select').material_select();
 });
 
-app.controller("mainController", function($scope, $location, $state, $rootScope){
-
-  $scope.urlInput = "Url is here";
-  $scope.urlInput = $location.path();
-  $scope.selectedMethod = "1";
-  $rootScope.selectedMethod = $scope.selectedMethod;
-
-});
+function toast(msg) {
+        var $toastContent = $('<span>'+msg+'</span>');
+              Materialize.toast($toastContent, 2000);
+    }
 
 app.controller("getController", function($scope, popupService,$window,Movie, $state, $rootScope){
-  $scope.limit = 20;
-  $rootScope.selectedMethod = "1";
- $scope.movies = Movie.query(); //fetch all movies. Issues a GET to /api/movies
+  $scope.showMovies = false;
+ $scope.movies = Movie.query(function(success) {
+                $scope.showMovies = true;
+              }, function(response) {
+                  toast("Some error occurred\n" +JSON.stringify(response))
+              }); //fetch all movies. Issues a GET to /api/movies
+
   $scope.deleteMovie = function(movie) { // Delete a movie. Issues a DELETE to /api/movies/:id
     if (popupService.showPopup('Really delete this?')) {
       movie.$delete(function() {
-        $window.location.href = '/movies'; //redirect to home
-      });
+            toast(" Deleted Successfully");
+            $state.go($state.current, {}, {reload: true}); //reload patch
+      }, function() {
+          toast("Some error occurred please try again.")
+      })     
     }
   };
 });
 
 app.controller("getParticularView", function($scope,$stateParams,Movie, $rootScope){
-    $rootScope.selectedMethod = "1"
     $scope.movie=Movie.get({id:$stateParams.id});
-
 })
 
 app.controller("postController",function($scope, Movie, $state, $rootScope){
-    
-$rootScope.selectedMethod = "2";
     $scope.movie=new Movie();
 
     $scope.addMovie=function(){
-        $scope.movie.$save(function(){
-            $state.go('movies');
+        $scope.movie.$save(function(success){
+          toast("Saved Successfully");
+          $state.go("movies", {}, {reload: true});
+        }, function(error){
+          toast("Some error occured\n" + JSON.stringify(error))
         });
     }
 });
@@ -46,7 +48,10 @@ app.controller("putController",
   function($scope, $state, $stateParams, Movie){
    $scope.updateMovie=function(){
         $scope.movie.$update(function(){
-            $state.go('movies');
+            toast("Updated Successfully");
+            $state.go('movies', {}, {reload: true});
+        }, function(error){
+            toast("Some error occured\n" + JSON.stringify(error))
         });
     };
 

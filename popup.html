@@ -11,37 +11,12 @@
   </head>
   <body ng-app="myApp">
  <nav>
-    <div class="nav-wrapper grey lighten-1">
+    <div class="nav-wrapper teal lighten-1">
     <a ui-sref="movies" class="left"><i class="material-icons">home</i></a>
       <a href="#" class="brand-logo center ">Rest Client</a>
     </div>
   </nav>
    <div class="card-panel">
-  	<div ng-controller="mainController">
-  		<div class="row">
-	      <div class="input-field col s2 ">
-	        <select disabled ng-model="selectedMethod" ng-change="onMethodChange(selectedMethod)">
-		      <option value="" disabled selected>Method</option>
-		      <option value="1">GET</option>
-		      <option value="2">POST</option>
-		      <option value="3">PUT</option>
-		      <option value="4">DELETE</option>
-		    </select>
-	      </div>
-	      <div class="col s10 input-field">
-	       <input id="url" type="text" placeholder="URL" ng-model="urlInput" disabled>
-	      </div>
-	     <!--  <div class="col s2 input-field"> 
-	      	<button class="waves-effect waves-teal btn-flat  grey lighten-3" style="width: 104px" ng-click="submit()">
-	      		Submit
-	  		</button>
-	      </div> -->
-  	</div>
-  </div>
-  <!-- <div class="progress">
-      <div class="indeterminate"></div>
-  </div>
-   --><div class="divider"></div>
  	<div class="section">
   		<div ui-view></div>
  	</div>

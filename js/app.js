@@ -23,6 +23,7 @@ app.config(function($stateProvider,$urlRouterProvider,$httpProvider) {
     });
 });
 
-app.run(function($state){
-  $state.go('movies')
+app.run(function($state, $rootScope, $location){
+  $state.go('movies');
+  console.log($location.absUrl());
 });
