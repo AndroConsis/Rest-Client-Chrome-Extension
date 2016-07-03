@@ -5,6 +5,7 @@ This project is created for coding challenge give by Cause Code as in 2nd Round 
 ## Getting Started
 
 **Clone the repository**
+
 1. Click the Clone button.
 
 2. Copy the clone command (either the SSH format or the HTTPS).
@@ -22,6 +23,7 @@ This project is created for coding challenge give by Cause Code as in 2nd Round 
 
 $ git clone ssh://git@bitbucket.example.com:7999/PROJ/repo.git
 ```
+
 
 **Then Load extension into Chrome**
 
