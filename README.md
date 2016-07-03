@@ -20,7 +20,13 @@ $ git clone ssh://git@bitbucket.example.com:7999/PROJ/repo.git
 
 **Load extension into Chrome**
 
-To load extension in Chrome, open up [chrome://extensions/](chrome://extensions/) in your chrome browser and click “Developer mode” in the top right. Now click “Load unpacked extension…” and select the directory you have cloned the bitbucket project. You should now see Rest Client extension in the list.
+To load extension in Chrome, open up 
+```
+#!url
+
+chrome://extensions/
+```
+ in your chrome browser and click “Developer mode” in the top right. Now click “Load unpacked extension…” and select the directory you have cloned the bitbucket project. You should now see Rest Client extension in the list.
 
 
 ### Prerequisities
