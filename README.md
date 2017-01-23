@@ -1,6 +1,6 @@
 # Rest Client as Chrome Extension
 
-This project is created for coding challenge give by Cause Code as in 2nd Round of interview process. Project works as basic Rest Client to make HTTP Get, Post, Put and Delete requests to a particular URL.
+This project is created for coding challenge. Project is basic Rest Client to make HTTP Get, Post, Put and Delete requests to a particular URL.
 
 ## Getting Started
 
@@ -21,7 +21,7 @@ This project is created for coding challenge give by Cause Code as in 2nd Round 
 ```
 #!terminal
 
-$ git clone ssh://git@bitbucket.example.com:7999/PROJ/repo.git
+$ git clone https://PrateekR@bitbucket.org/PrateekR/rest-client-app.git
 ```
 
 
@@ -33,7 +33,8 @@ To load extension in Chrome, open up
 
 chrome://extensions/
 ```
- in your chrome browser and click “Developer mode” in the top right. Now click “Load unpacked extension…” and select the directory you have cloned the bitbucket project. You should now see Rest Client extension in the list. You can open it by clicking on the icon ![icon.png](https://bitbucket.org/repo/5apLgx/images/3846976592-icon.png)
+ in your chrome browser and click “Developer mode” in the top right. Now click “Load unpacked extension…” and select the directory you have cloned the bitbucket project. 
+You should now see Rest Client extension in the list. You can open it by clicking on the icon ![icon.png](https://bitbucket.org/repo/5apLgx/images/3846976592-icon.png)
 
 
 ## Prerequisities
